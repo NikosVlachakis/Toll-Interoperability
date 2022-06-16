@@ -8,10 +8,6 @@ This project's goal is to produce software that is responsible for the interoper
 - Make sure that you have the latest version of MongoDB installed. Otherwise, download [MongoDB](https://www.mongodb.com/try/download/community).
 
 ## Instructions
-- Clone the [project repository](https://github.com/ntua/TL21-23)
-```
-$ git clone https://github.com/ntua/TL21-23
-```
 
 - Make sure the ```mongod``` process is running
 
