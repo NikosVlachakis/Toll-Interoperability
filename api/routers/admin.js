@@ -11,8 +11,9 @@ const {
 
 const router = new express.Router();
 
+
 router.get("/admin/healthcheck",  async (req, res) => {
-  // ready states being:
+  // ready states is:
   // 0: disconnected
   // 1: connected  
   const result = checkMongoConnection();
