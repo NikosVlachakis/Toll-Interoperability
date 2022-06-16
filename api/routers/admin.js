@@ -13,7 +13,7 @@ const router = new express.Router();
 
 
 router.get("/admin/healthcheck",  async (req, res) => {
-  // ready states is:
+  // ready states being:
   // 0: disconnected
   // 1: connected  
   const result = checkMongoConnection();
@@ -84,6 +84,7 @@ router.post("/admin/passesupd", async (req, res) => {
     const csvFilePath = req.query.filepath;
     if(!csvFilePath || csvFilePath.slice(-4) !== ".csv") throw new Error("400");
     
+    // Create passes array from csv file
     const jsonArray = await csv({
       colParser: {
         timestamp: function (item) {
@@ -96,6 +97,7 @@ router.post("/admin/passesupd", async (req, res) => {
     }).fromFile(csvFilePath);
     // Insert new passes from array
     await Pass.insertMany(jsonArray);
+
     res.status(200).send({ status: "OK" });
   } catch (err) {
     if (err == "Error: 400") res.status(400).send({ status: "failed" });
